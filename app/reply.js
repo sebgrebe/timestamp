@@ -6,9 +6,9 @@ var obj_null = {
 				}
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December']
 function getNatural(DateObj) {
-	var day = DateObj.getUTCDate()
-	var month = months[DateObj.getUTCMonth()]
-	var year = DateObj.getUTCFullYear()
+	var day = DateObj.getDate()
+	var month = months[DateObj.getMonth()]
+	var year = DateObj.getFullYear()
 	natural = month+' '+day+', '+year
 	return natural
 }
@@ -23,6 +23,7 @@ $(document).ready(function() {
 		success: (data) => {
 			var input = data.substr(1);
 			var input_cleaned = input.replace(/%20/g, ',');
+			console.log(input_cleaned)
 			if (isNaN(input)) {
 				var date_obj = new Date(input_cleaned);
 				if (isNaN(date_obj.getTime())) {
